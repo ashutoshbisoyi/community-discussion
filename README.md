@@ -2,6 +2,10 @@
 
 This is a community room discussion panel where basically different users can add their comments and other users can react to their comments.
 
+## Project Snap
+
+    ![project snap](./project-snapshot/snap.png)
+
 ## Features
 
     1. Generates random users on click of refresh button in navigation bar or on page refresh
