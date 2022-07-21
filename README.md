@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Community Room
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a community room discussion panel where basically different users can add their comments and other users can react to their comments.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+    1. Generates random users on click of refresh button in navigation bar or on page refresh
+    2. Generated user can add a comments
+        a. Comment get added on press of enter
+        b. Comment get added on click of comment button
+        c. User gets a notification when comment added
+    3. Everytime user adds a comment, the comment will appear in comment seciton and get stored. Hence the comments do not get removed on page refersh.
+    4. Each comment has some actions
+        a. Upvote and Unvote
+        b. See users who upvoted
+        c. Reply to the comment (not implemented)
+        d. Delete the comment
+    5. The user who added the comment can
+        a. Delete the comment
+        b. Can see who upvoted the comment
+        c. Can not upvote the comment. Upvote is disabled for the creator.
+    6. Other users except the commentor can
+        a. Upvote a comment
+        b. Unvote their upvote
+        c. See who have upvoted
+        d. Reply to the comment (not implemented)
+        e. Can not delete any other's comment
+    7. Comments will get rendered according to the upvotes they have. The comment with more upvotes will get rendered first.
+    8. The interface can also work in mobile screen
 
-### `npm start`
+## Tools and Concepts Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    1. React hooks
+    2. CSS
+    3. Material UI
+    4. UUID
+    5. Context API

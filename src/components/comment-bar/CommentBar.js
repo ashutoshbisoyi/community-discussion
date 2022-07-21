@@ -1,0 +1,74 @@
+import React, { useContext, useState } from 'react';
+//mui
+import { Avatar, Grid } from '@mui/material';
+//context
+import CommentContext from '../../context/comments/CommentsContext';
+import UserContext from '../../context/user/UserContext';
+import NotificationContext from '../../context/notification/NotificationContext';
+//components
+import { PrimaryButton } from '../button/Button';
+//uuid
+import uuid from 'react-uuid';
+
+const CommentBar = () => {
+  const [userComment, setUserComment] = useState('');
+
+  const { currentUser } = React.useContext(UserContext);
+  const { addNewComment } = useContext(CommentContext);
+  const { notificationData, setNotificationData } =
+    useContext(NotificationContext);
+
+  const { userId, name, image } = currentUser;
+
+  const handleInputChange = e => setUserComment(e.target.value);
+
+  const addComment = e => {
+    e.preventDefault();
+
+    const newCommentData = {
+      commentId: uuid(),
+      commentedUserName: name,
+      commentedUserId: userId,
+      commentedUserImage: image,
+      comment: userComment,
+      commentDateTime: new Date(),
+      upVotes: [],
+    };
+
+    addNewComment(newCommentData);
+
+    setNotificationData({
+      ...notificationData,
+      open: true,
+      message: 'Comment Added',
+    });
+
+    setUserComment('');
+  };
+
+  return (
+    <Grid container spacing={2} marginBottom={6}>
+      <Grid item xs={2} md={1}>
+        <Avatar alt={name} src={image} />
+      </Grid>
+      <Grid item xs={10} md={9}>
+        <form onSubmit={addComment}>
+          <input
+            type='text'
+            value={userComment}
+            placeholder='What are your thoughts?'
+            className='comment-input'
+            onChange={handleInputChange}
+          />
+        </form>
+      </Grid>
+      <Grid item xs={12} md={2} className='comment-btn-wrapper'>
+        <PrimaryButton variant='contained' onClick={addComment}>
+          Comment
+        </PrimaryButton>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default CommentBar;

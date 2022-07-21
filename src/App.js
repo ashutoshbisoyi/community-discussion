@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+//material ui
+import { ThemeProvider } from '@emotion/react';
+// utils
+import theme from './utils/theme';
+//context
+import UserState from './context/user/UserState';
+import CommentState from './context/comments/CommentState';
+import NotificationState from './context/notification/NotificationState';
+// components
+import Home from './pages/Home';
+import NavBar from './components/navbar/NavBar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <UserState>
+        <CommentState>
+          <NotificationState>
+            <NavBar />
+            <Home />
+          </NotificationState>
+        </CommentState>
+      </UserState>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
