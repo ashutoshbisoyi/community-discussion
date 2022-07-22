@@ -48,13 +48,15 @@ const UserReply = ({
             </Typography>
           </Tooltip>
         </Box>
-        <Typography
-          variant='body2'
-          className='user-comment-body'
-          marginBottom={2}
-        >
-          {reply}
-        </Typography>
+        <pre>
+          <Typography
+            variant='body2'
+            className='user-comment-body'
+            marginBottom={2}
+          >
+            {reply}
+          </Typography>
+        </pre>
         {repliedUserId === userId && (
           <CommentActionButton color='secondary' onClick={handleDeleteReply}>
             Delete

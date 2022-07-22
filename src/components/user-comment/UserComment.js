@@ -45,13 +45,15 @@ const UserComment = ({
             </Typography>
           </Tooltip>
         </Box>
-        <Typography
-          variant='body2'
-          className='user-comment-body'
-          marginBottom={2}
-        >
-          {comment}
-        </Typography>
+        <pre>
+          <Typography
+            variant='body2'
+            className='user-comment-body'
+            marginBottom={2}
+          >
+            {comment}
+          </Typography>
+        </pre>
         <CommentActions
           commentId={commentId}
           commentedUserId={commentedUserId}

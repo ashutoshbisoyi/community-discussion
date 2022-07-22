@@ -67,6 +67,7 @@ const ReplyModal = () => {
           variant='filled'
           fullWidth
           onChange={handleInputChange}
+          autoFocus
         />
       </DialogContent>
       <DialogActions>

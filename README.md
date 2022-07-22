@@ -39,6 +39,7 @@ This is a community room discussion panel where basically different users can ad
   - Reply to the comment
   - Can not delete any other's comment
 - Replies get rendered below each comment. Only the creator can delete the reply to a specific comment.
+  - Replies can have multiple lines
 - Comments will get rendered according to the upvotes they have. The comment with more upvotes will get rendered first.
 - The interface is responsive for mobile screen
 
