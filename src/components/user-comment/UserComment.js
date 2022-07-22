@@ -24,7 +24,9 @@ const UserComment = ({
       container
       spacing={1}
       className={
-        replies.length > 0 ? 'user-comment have-replies' : 'user-comment'
+        replies && replies.length > 0
+          ? 'user-comment have-replies'
+          : 'user-comment'
       }
     >
       <Grid item xs={2} md={1}>
@@ -60,9 +62,8 @@ const UserComment = ({
           upVotes={upVotes}
         />
         <Box className='reply-container'>
-          {replies.map((reply, index) => (
-            <UserReply {...reply} key={index} />
-          ))}
+          {replies &&
+            replies.map((reply, index) => <UserReply {...reply} key={index} />)}
         </Box>
       </Grid>
     </Grid>
