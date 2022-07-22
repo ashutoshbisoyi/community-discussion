@@ -12,7 +12,9 @@ This is a community room discussion panel where basically different users can ad
 
 ## Features
 
-- Generates random users on click of refresh button in navigation bar or on page refresh
+- Generates random users
+  - user generates on click of refresh button
+  - user generates on page refresh
 - Generated user can add a comments
   - Comment get added on press of enter
   - Comment get added on click of comment button
@@ -21,7 +23,7 @@ This is a community room discussion panel where basically different users can ad
 - Each comment has some actions
   - Upvote and Unvote
   - See users who upvoted
-  - Reply to the comment (not implemented)
+  - Reply to the comment
   - Delete the comment
 - The user who added the comment can
   - Delete the comment
@@ -31,10 +33,11 @@ This is a community room discussion panel where basically different users can ad
   - Upvote a comment
   - Unvote their upvote
   - See who have upvoted
-  - Reply to the comment (not implemented)
+  - Reply to the comment
   - Can not delete any other's comment
+- Replies get rendered below each comment. Only the creator can delete the reply to a specific comment.
 - Comments will get rendered according to the upvotes they have. The comment with more upvotes will get rendered first.
-- The interface can also work in mobile screen
+- The interface is responsive for mobile screen
 
 ## Tools and Concepts Used
 
@@ -43,3 +46,5 @@ This is a community room discussion panel where basically different users can ad
 - Material UI
 - UUID
 - Context API
+- Locale Storage
+- Moment JS

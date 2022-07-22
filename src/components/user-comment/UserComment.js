@@ -1,12 +1,13 @@
 import React from 'react';
 //mui
-import { Avatar, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Typography } from '@mui/material';
 //icons
 import CircleIcon from '@mui/icons-material/Circle';
 //moment
 import Moment from 'react-moment';
 //component
 import CommentActions from '../comment-actions/CommentActions';
+import UserReply from '../user-reply/UserReply';
 
 const UserComment = ({
   commentId,
@@ -16,14 +17,21 @@ const UserComment = ({
   comment,
   commentDateTime,
   upVotes,
+  replies,
 }) => {
   return (
-    <Grid container spacing={1} className='user-comment'>
+    <Grid
+      container
+      spacing={1}
+      className={
+        replies.length > 0 ? 'user-comment have-replies' : 'user-comment'
+      }
+    >
       <Grid item xs={2} md={1}>
         <Avatar alt={commentedUserName} src={commentedUserImage} />
       </Grid>
       <Grid item xs={10} md={11}>
-        <div className='user-comment-title'>
+        <Box className='user-comment-title'>
           <Typography variant='subtitle1'>{commentedUserName}</Typography>
           <CircleIcon
             sx={{
@@ -34,7 +42,7 @@ const UserComment = ({
           <Typography variant='body2' color='GrayText'>
             <Moment toNow>{commentDateTime}</Moment>
           </Typography>
-        </div>
+        </Box>
         <Typography
           variant='body2'
           className='user-comment-body'
@@ -47,6 +55,11 @@ const UserComment = ({
           commentedUserId={commentedUserId}
           upVotes={upVotes}
         />
+        <Box className='reply-container'>
+          {replies.map((reply, index) => (
+            <UserReply {...reply} key={index} />
+          ))}
+        </Box>
       </Grid>
     </Grid>
   );

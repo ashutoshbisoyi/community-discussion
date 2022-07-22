@@ -33,6 +33,7 @@ const CommentBar = () => {
       comment: userComment,
       commentDateTime: new Date(),
       upVotes: [],
+      replies: [],
     };
 
     addNewComment(newCommentData);
@@ -48,10 +49,10 @@ const CommentBar = () => {
 
   return (
     <Grid container spacing={2} marginBottom={6}>
-      <Grid item xs={2} md={1}>
+      <Grid item xs={2} sm={1}>
         <Avatar alt={name} src={image} />
       </Grid>
-      <Grid item xs={10} md={9}>
+      <Grid item xs={10} sm={9}>
         <form onSubmit={addComment}>
           <input
             type='text'
@@ -62,7 +63,7 @@ const CommentBar = () => {
           />
         </form>
       </Grid>
-      <Grid item xs={12} md={2} className='comment-btn-wrapper'>
+      <Grid item xs={12} sm={2} className='comment-btn-wrapper'>
         <PrimaryButton variant='contained' onClick={addComment}>
           Comment
         </PrimaryButton>

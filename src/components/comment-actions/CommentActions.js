@@ -18,6 +18,7 @@ import { CommentActionButton } from '../button/Button';
 // context
 import CommentContext from '../../context/comments/CommentsContext';
 import UserContext from '../../context/user/UserContext';
+import ReplyModalContext from '../../context/reply-modal/ReplyModalContext';
 
 const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -25,6 +26,7 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
 
   const { currentUser } = React.useContext(UserContext);
   const { removeComment, addUpVote, unVote } = useContext(CommentContext);
+  const { replyModalData, setReplyModalData } = useContext(ReplyModalContext);
 
   const { userId, name, image } = currentUser;
 
@@ -50,6 +52,9 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
 
   const handlePopoverOpen = event => setAnchorEl(event.currentTarget);
   const handlePopoverClose = () => setAnchorEl(null);
+
+  const openReplyModal = () =>
+    setReplyModalData({ ...replyModalData, open: true, commentId: commentId });
 
   const open = Boolean(anchorEl);
   return (
@@ -122,7 +127,7 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
       </Popover>
 
       {/* reply  */}
-      <CommentActionButton>Reply</CommentActionButton>
+      <CommentActionButton onClick={openReplyModal}>Reply</CommentActionButton>
 
       {/* delete  */}
       {userId === commentedUserId && (

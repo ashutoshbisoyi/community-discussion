@@ -17,8 +17,8 @@ const Home = () => {
       <main>
         <CommentBar />
         <ExistingComments />
-        <Notification />
       </main>
+      <Notification />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import theme from './utils/theme';
 import UserState from './context/user/UserState';
 import CommentState from './context/comments/CommentState';
 import NotificationState from './context/notification/NotificationState';
+import ReplyModalState from './context/reply-modal/ReplyModalState';
 // components
 import Home from './pages/Home';
 import NavBar from './components/navbar/NavBar';
@@ -15,12 +16,14 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <UserState>
-        <CommentState>
-          <NotificationState>
-            <NavBar />
-            <Home />
-          </NotificationState>
-        </CommentState>
+        <ReplyModalState>
+          <CommentState>
+            <NotificationState>
+              <NavBar />
+              <Home />
+            </NotificationState>
+          </CommentState>
+        </ReplyModalState>
       </UserState>
     </ThemeProvider>
   );

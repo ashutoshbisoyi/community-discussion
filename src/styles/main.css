@@ -58,7 +58,23 @@ textarea {
 }
 
 .user-comment {
+  position: relative;
   margin-bottom: 2em;
+}
+
+.user-comment.have-replies .reply-container {
+  padding-top: 2em;
+}
+
+.user-comment.have-replies::after {
+  content: '';
+  display: inline-block;
+  height: 80%;
+  width: 1px;
+  background-color: #d5d5d5;
+  position: absolute;
+  left: 27px;
+  top: 50px;
 }
 
 .user-comment-title {
@@ -71,7 +87,7 @@ textarea {
   color: #6b778f;
 }
 
-@media (max-width: 476px) {
+@media (max-width: 598px) {
   .nav-wrapper {
     justify-content: flex-end;
   }
