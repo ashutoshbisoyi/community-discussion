@@ -20,7 +20,9 @@ This is a community room discussion panel where basically different users can ad
   - Comment get added on click of comment button
   - User gets a notification when comment added
 - Everytime user adds a comment, the comment will appear in comment seciton and get stored. Hence the comments do not get removed on page refersh.
-- Each comment has some actions
+- Each comment has these informations and actions
+  - Commented user
+  - When the user commented (hover to see full date time)
   - Upvote and Unvote
   - See users who upvoted
   - Reply to the comment
@@ -30,6 +32,7 @@ This is a community room discussion panel where basically different users can ad
   - Can see who upvoted the comment
   - Can not upvote the comment. Upvote is disabled for the creator.
 - Other users except the commentor can
+  - see who and when added the comment
   - Upvote a comment
   - Unvote their upvote
   - See who have upvoted

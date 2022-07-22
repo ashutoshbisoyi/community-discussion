@@ -1,6 +1,6 @@
 import React from 'react';
 //mui
-import { Avatar, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Tooltip, Typography } from '@mui/material';
 //icons
 import CircleIcon from '@mui/icons-material/Circle';
 //moment
@@ -39,9 +39,11 @@ const UserComment = ({
               color: '#6b778f',
             }}
           />
-          <Typography variant='body2' color='GrayText'>
-            <Moment toNow>{commentDateTime}</Moment>
-          </Typography>
+          <Tooltip title={<Moment>{commentDateTime}</Moment>}>
+            <Typography variant='body2' color='GrayText'>
+              <Moment fromNow>{commentDateTime}</Moment>
+            </Typography>
+          </Tooltip>
         </Box>
         <Typography
           variant='body2'

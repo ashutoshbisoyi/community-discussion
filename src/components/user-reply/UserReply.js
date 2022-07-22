@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 //mui
-import { Avatar, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Tooltip, Typography } from '@mui/material';
 //icons
 import CircleIcon from '@mui/icons-material/Circle';
 //moment
@@ -42,9 +42,11 @@ const UserReply = ({
               color: '#6b778f',
             }}
           />
-          <Typography variant='body2' color='GrayText'>
-            <Moment toNow>{replyDateTime}</Moment>
-          </Typography>
+          <Tooltip title={<Moment>{replyDateTime}</Moment>}>
+            <Typography variant='body2' color='GrayText'>
+              <Moment fromNow>{replyDateTime}</Moment>
+            </Typography>
+          </Tooltip>
         </Box>
         <Typography
           variant='body2'
