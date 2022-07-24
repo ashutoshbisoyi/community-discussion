@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 import CommentBar from '../components/comment-bar/CommentBar';
 import ExistingComments from '../components/existing-comments/ExistingComments';
 import Notification from '../components/notification/Notification';
+import ConfirmationModal from '../components/confirmation-modal/ConfirmationModal';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <ExistingComments />
       </main>
       <Notification />
+      <ConfirmationModal />
     </div>
   );
 };

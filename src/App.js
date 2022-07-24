@@ -11,18 +11,21 @@ import ReplyModalState from './context/reply-modal/ReplyModalState';
 // components
 import Home from './pages/Home';
 import NavBar from './components/navbar/NavBar';
+import ConfirmationModalState from './context/confirmation-modal/ConfirmationModalState';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <UserState>
         <ReplyModalState>
-          <CommentState>
-            <NotificationState>
-              <NavBar />
-              <Home />
-            </NotificationState>
-          </CommentState>
+          <NotificationState>
+            <ConfirmationModalState>
+              <CommentState>
+                <NavBar />
+                <Home />
+              </CommentState>
+            </ConfirmationModalState>
+          </NotificationState>
         </ReplyModalState>
       </UserState>
     </ThemeProvider>

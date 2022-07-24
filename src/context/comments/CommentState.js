@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+//context
+import ConfirmationModalContext from '../confirmation-modal/ConfirmationModalContext';
+import NotificationContext from '../notification/NotificationContext';
 import CommentContext from './CommentsContext';
 
 const CommentState = ({ children }) => {
   const [comments, setComments] = useState([]);
+  const { modalDetails, setModalDetails } = useContext(
+    ConfirmationModalContext
+  );
+  const { notificationData, setNotificationData } =
+    useContext(NotificationContext);
 
   useEffect(() => {
     const storedComments = localStorage.getItem('existingComments');
@@ -17,13 +25,33 @@ const CommentState = ({ children }) => {
   const addNewComment = data => {
     const newSetOfComments = [...comments, data];
     updateComments(newSetOfComments);
+    setNotificationData({
+      ...notificationData,
+      open: true,
+      message: 'Comment Added',
+    });
   };
 
   const removeComment = id => {
-    const filteredComments = comments.filter(
-      comment => comment.commentId !== id
-    );
-    updateComments(filteredComments);
+    setModalDetails({
+      ...modalDetails,
+      open: true,
+      modalTitle: 'Do want to delete this comment?',
+      modalText:
+        'If you click on confirm then the comment along with all the replies and upvote details will be removed permanently.',
+      confirmationAction: () => {
+        const filteredComments = comments.filter(
+          comment => comment.commentId !== id
+        );
+        updateComments(filteredComments);
+        setModalDetails({ ...modalDetails, open: false });
+        setNotificationData({
+          ...notificationData,
+          open: true,
+          message: 'Comment Removed',
+        });
+      },
+    });
   };
 
   const addUpVote = (commentId, user) => {
@@ -38,6 +66,11 @@ const CommentState = ({ children }) => {
           : comment
       );
       updateComments(updatedComments);
+      setNotificationData({
+        ...notificationData,
+        open: true,
+        message: 'You upvoted this comment',
+      });
     }
   };
 
@@ -51,6 +84,11 @@ const CommentState = ({ children }) => {
         : comment
     );
     updateComments(updatedComments);
+    setNotificationData({
+      ...notificationData,
+      open: true,
+      message: 'Upvote removed',
+    });
   };
 
   const addReply = (commentId, reply) => {
@@ -60,19 +98,39 @@ const CommentState = ({ children }) => {
         : comment
     );
     updateComments(updatedComments);
+    setNotificationData({
+      ...notificationData,
+      open: true,
+      message: 'Reply Added',
+    });
   };
 
   const removeReply = (commentId, replyId) => {
-    console.log('going to delete reply with id', replyId);
-    const updatedComments = comments.map(comment =>
-      comment.commentId === commentId
-        ? {
-            ...comment,
-            replies: comment.replies.filter(reply => reply.replyId !== replyId),
-          }
-        : comment
-    );
-    updateComments(updatedComments);
+    setModalDetails({
+      ...modalDetails,
+      open: true,
+      modalTitle: 'Do want to remove this reply?',
+      modalText: 'Your reply to this comment will be removed permanently.',
+      confirmationAction: () => {
+        const updatedComments = comments.map(comment =>
+          comment.commentId === commentId
+            ? {
+                ...comment,
+                replies: comment.replies.filter(
+                  reply => reply.replyId !== replyId
+                ),
+              }
+            : comment
+        );
+        updateComments(updatedComments);
+        setModalDetails({ ...modalDetails, open: false });
+        setNotificationData({
+          ...notificationData,
+          open: true,
+          message: 'Reply Removed',
+        });
+      },
+    });
   };
 
   const value = {

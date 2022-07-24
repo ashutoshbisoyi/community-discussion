@@ -4,7 +4,6 @@ import { Avatar, Grid } from '@mui/material';
 //context
 import CommentContext from '../../context/comments/CommentsContext';
 import UserContext from '../../context/user/UserContext';
-import NotificationContext from '../../context/notification/NotificationContext';
 //components
 import { PrimaryButton } from '../button/Button';
 //uuid
@@ -15,8 +14,6 @@ const CommentBar = () => {
 
   const { currentUser } = React.useContext(UserContext);
   const { addNewComment } = useContext(CommentContext);
-  const { notificationData, setNotificationData } =
-    useContext(NotificationContext);
 
   const { userId, name, image } = currentUser;
 
@@ -37,13 +34,6 @@ const CommentBar = () => {
     };
 
     addNewComment(newCommentData);
-
-    setNotificationData({
-      ...notificationData,
-      open: true,
-      message: 'Comment Added',
-    });
-
     setUserComment('');
   };
 
