@@ -12,7 +12,7 @@ const NavBar = () => {
   const { currentUser, generateRandomUser } = React.useContext(UserContext);
   const { name, image } = currentUser;
   return (
-    <AppBar position='static'>
+    <AppBar position='sticky'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters className='nav-wrapper'>
           <Typography variant='h6' className='nav-title'>
