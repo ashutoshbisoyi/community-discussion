@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 //mui
 import { Avatar, Grid } from '@mui/material';
+import { Box } from '@mui/system';
 //context
 import CommentContext from '../../context/comments/CommentsContext';
 import UserContext from '../../context/user/UserContext';
@@ -16,6 +17,8 @@ const CommentBar = () => {
   const { addNewComment } = useContext(CommentContext);
 
   const { userId, name, image } = currentUser;
+
+  const wordLimit = 35;
 
   const handleInputChange = e => setUserComment(e.target.value);
 
@@ -46,12 +49,16 @@ const CommentBar = () => {
         <form onSubmit={addComment}>
           <input
             type='text'
-            value={userComment}
+            value={userComment.slice(0, wordLimit - 1)}
             placeholder='What are your thoughts?'
             className='comment-input'
             onChange={handleInputChange}
+            autoFocus
           />
         </form>
+        <Box className='word-limit'>
+          {userComment.length} / {wordLimit}
+        </Box>
       </Grid>
       <Grid item xs={12} sm={2} className='comment-btn-wrapper'>
         <PrimaryButton variant='contained' onClick={addComment}>

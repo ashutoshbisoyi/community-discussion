@@ -53,6 +53,13 @@ textarea {
   opacity: 1;
 }
 
+.word-limit {
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+  color: #aaaaaa;
+}
+
 .comments-container {
   padding: 3em 0;
 }
