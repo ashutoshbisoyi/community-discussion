@@ -57,6 +57,7 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
     setReplyModalData({ ...replyModalData, open: true, commentId: commentId });
 
   const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   return (
     <div>
       {/* up vote  */}
@@ -81,31 +82,22 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
         <Chip
           label={upVotes.length}
           size='small'
-          aria-owns={open ? 'mouse-over-popover' : undefined}
-          aria-haspopup='true'
-          onMouseEnter={handlePopoverOpen}
-          onMouseLeave={handlePopoverClose}
+          aria-describedby={id}
+          onClick={handlePopoverOpen}
           sx={{ marginRight: '1em' }}
         />
       )}
 
       {/* up vote pop over  */}
       <Popover
-        id='mouse-over-popover'
-        sx={{
-          pointerEvents: 'none',
-        }}
-        open={open && upVotes.length > 0}
+        id={id}
         anchorEl={anchorEl}
+        open={open}
+        onClose={handlePopoverClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        onClose={handlePopoverClose}
         disableRestoreFocus
       >
         <List>
