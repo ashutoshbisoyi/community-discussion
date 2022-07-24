@@ -1,6 +1,6 @@
 import React from 'react';
 //mui
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 //components
 import CommentBar from '../components/comment-bar/CommentBar';
 import ExistingComments from '../components/existing-comments/ExistingComments';
@@ -9,7 +9,7 @@ import ConfirmationModal from '../components/confirmation-modal/ConfirmationModa
 
 const Home = () => {
   return (
-    <div className='container'>
+    <Box className='container'>
       <header>
         <Typography variant='h5' marginBottom={4}>
           Discussion
@@ -21,7 +21,7 @@ const Home = () => {
       </main>
       <Notification />
       <ConfirmationModal />
-    </div>
+    </Box>
   );
 };
 

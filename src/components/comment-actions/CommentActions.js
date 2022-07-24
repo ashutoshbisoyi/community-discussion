@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 //mui
 import {
   Avatar,
+  Box,
   Chip,
   List,
   ListItem,
@@ -59,7 +60,7 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   return (
-    <div>
+    <Box>
       {/* up vote  */}
       <CommentActionButton
         onClick={upVoteExists ? handleUnVote : handleUpVote}
@@ -127,7 +128,7 @@ const CommentActions = ({ commentId, commentedUserId, upVotes }) => {
           Delete
         </CommentActionButton>
       )}
-    </div>
+    </Box>
   );
 };
 
