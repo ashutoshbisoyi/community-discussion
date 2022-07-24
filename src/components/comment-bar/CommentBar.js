@@ -27,7 +27,7 @@ const CommentBar = () => {
       commentedUserName: name,
       commentedUserId: userId,
       commentedUserImage: image,
-      comment: userComment,
+      comment: userComment.trim(),
       commentDateTime: new Date(),
       upVotes: [],
       replies: [],

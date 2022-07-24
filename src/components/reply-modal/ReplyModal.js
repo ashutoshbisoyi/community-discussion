@@ -39,7 +39,7 @@ const ReplyModal = () => {
       repliedUserName: name,
       repliedUserId: userId,
       repliedUserImage: image,
-      reply: replyText,
+      reply: replyText.trim(),
       replyDateTime: new Date(),
       commentId: commentId,
     };
