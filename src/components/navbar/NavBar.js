@@ -15,7 +15,7 @@ const NavBar = () => {
     <AppBar position='sticky'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters className='nav-wrapper'>
-          <Typography variant='h6' className='nav-title'>
+          <Typography variant='h6' component='h1' className='nav-title'>
             Community Room
           </Typography>
           <Box className='nav-user-wrapper'>

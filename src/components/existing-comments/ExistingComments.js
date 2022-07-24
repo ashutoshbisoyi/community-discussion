@@ -15,6 +15,7 @@ const ExistingComments = () => {
         <>
           <Divider />
           <Box className='comments-container'>
+            {/* if comments exist then sort them according to up votes and reverse the array to map them in order of higher to lower */}
             {comments &&
               comments
                 .sort((a, b) => (a.upVotes.length > b.upVotes.length ? 1 : -1))
