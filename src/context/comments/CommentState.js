@@ -23,13 +23,21 @@ const CommentState = ({ children }) => {
   };
 
   const addNewComment = data => {
-    const newSetOfComments = [...comments, data];
-    updateComments(newSetOfComments);
-    setNotificationData({
-      ...notificationData,
-      open: true,
-      message: 'Comment Added',
-    });
+    if (data.comment !== '') {
+      const newSetOfComments = [...comments, data];
+      updateComments(newSetOfComments);
+      setNotificationData({
+        ...notificationData,
+        open: true,
+        message: 'Comment Added',
+      });
+    } else {
+      setNotificationData({
+        ...notificationData,
+        open: true,
+        message: 'Comment can not be empty',
+      });
+    }
   };
 
   const removeComment = id => {
@@ -92,17 +100,25 @@ const CommentState = ({ children }) => {
   };
 
   const addReply = (commentId, reply) => {
-    const updatedComments = comments.map(comment =>
-      comment.commentId === commentId
-        ? { ...comment, replies: [...comment.replies, reply] }
-        : comment
-    );
-    updateComments(updatedComments);
-    setNotificationData({
-      ...notificationData,
-      open: true,
-      message: 'Reply Added',
-    });
+    if (reply.reply !== '') {
+      const updatedComments = comments.map(comment =>
+        comment.commentId === commentId
+          ? { ...comment, replies: [...comment.replies, reply] }
+          : comment
+      );
+      updateComments(updatedComments);
+      setNotificationData({
+        ...notificationData,
+        open: true,
+        message: 'Reply Added',
+      });
+    } else {
+      setNotificationData({
+        ...notificationData,
+        open: true,
+        message: 'Reply can not be empty',
+      });
+    }
   };
 
   const removeReply = (commentId, replyId) => {
